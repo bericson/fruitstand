@@ -38,7 +38,7 @@ removed' }
   end
 
   def checkout
-
+    
   end
 
   #GET /carts
