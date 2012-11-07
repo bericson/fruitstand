@@ -1,0 +1,26 @@
+<h1>Store</h1>
+<h2>Current Cart:</h2>
+
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<ul>
+  <li>NAME -- PRICE -- QTY -- TOTAL</li>
+  <% @cart.line_items.each do |li| %>
+    <li><%#= li.inspect %>
+      <%= "#{li.product.name} -- #{li.product.price} -- #{li.quantity}
+       -- #{li.total_cents} ==>" %> <%= link_to 'Delete Line Item (and all
+        items contained therein)', remove_item_path(id: li),
+                                                :method => 'post' %>
+     </li>
+  <% end %>
+</ul>
+
+<p><%= "This cart currently has #{@cart.line_items.count} line items,
+with a total of #{@cart.line_items.sum(&:quantity)} individual items." %>
+
+<p><%= "The current cart total is: $#{@cart.total_cents}" %></p>
+
+<p><%= link_to "Continue Shopping", root_path %> | <%= link_to "Proceed to
+Checkout", checkout_path %></p>

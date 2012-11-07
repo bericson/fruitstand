@@ -1,0 +1,19 @@
+<h1>Store</h1>
+<h2>Products:</h2>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= link_to 'Add to Cart', add_item_path(id: product),
+                      :method => 'post' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

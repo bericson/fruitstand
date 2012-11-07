@@ -1,0 +1,19 @@
+<h1>Store</h1>
+<h2>Products:</h2>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td><%=  product.name %></td>
+      <td><%=  product.price %></td>
+      <td><%= button_to 'Add to Cart', line_items_path(product_id: product)
+      %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

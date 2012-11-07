@@ -1,0 +1,23 @@
+<h1>Listing carts</h1>
+
+<table>
+  <tr>
+    <th>Product Name for Line Item</th>
+    <th>Number of Line Items in Cart</th>
+  </tr>
+
+<% @carts.each do |cart| %>
+<%= puts cart.inspect %>
+<%= puts cart.line_items.inspect %>
+  <tr>
+    <td><%= cart.line_items.count %></td>
+    <td><%= link_to 'Show', cart %></td>
+    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
+    <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cart', new_cart_path %>
