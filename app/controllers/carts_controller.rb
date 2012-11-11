@@ -34,12 +34,29 @@ successfully added on a line item in the cart.' }
     respond_to do |format|
       format.html { redirect_to cart_path, notice: 'Line item has been
 removed' }
-      end
+    end
   end
 
   def checkout
-    
+    @cart = Cart.find(current_cart)
+    @order = Order.create
+    @cart.line_items.each do |li|
+      @order.line_items << LineItem.new({product: li.product,
+                                         quantity: li.quantity})
+    end
+    @order.save
+    if @order.bill
+      #@cart = nil
+      @cart.destroy
+      flash[:notice] = "Thank you for completing your order."
+      redirect_to root_path
+    end
   end
+
+  def thank_you
+
+  end
+
 
   #GET /carts
   #GET /carts.json

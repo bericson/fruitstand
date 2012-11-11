@@ -1,9 +1,9 @@
 class LineItem < ActiveRecord::Base
 
-  belongs_to :cart
+  belongs_to :itemable, polymorphic: true
   belongs_to :product
 
-  attr_accessible :price, :product_id, :quantity, :cart_id
+  attr_accessible :price, :product, :quantity, :cart_id
 
   before_create :save_price
 

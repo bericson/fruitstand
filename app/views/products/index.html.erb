@@ -1,7 +1,11 @@
 <h1>Store</h1>
 <h2>Products:</h2>
 
-<table>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<table class="table table-striped">
   <thead>
     <th>Name</th>
     <th>Price</th>
