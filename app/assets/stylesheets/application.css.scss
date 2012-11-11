@@ -1,0 +1,63 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree .
+*/
+
+@import "bootswatch/spacelab/variables";
+@import "bootstrap";
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(https://themes.googleusercontent.com/static/fonts/ubuntu/v4/vRvZYZlUaogOuHbBTT1SNevvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+
+body { padding-top: 30px; }
+
+.login-status {
+  text-align: right;
+  padding-top: 11px;
+  font-size: 0.8em;
+}
+.cart-quantity {
+  text-align: center;
+}
+
+#cart-totals td {
+  background-color: #fff;
+  padding-top: 15px;
+}
+
+.cart-totals-label {
+  font-weight: bold;
+}
+
+.cart-total {
+  font-weight: bold;
+}
+
+
+/*
+#header {
+  height: 20px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: #eee;
+}
+
+#footer {
+  margin-top: 45px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: #eee;
+}
+*/
+
+@import "bootstrap-responsive";
+@import "bootswatch/spacelab/bootswatch";

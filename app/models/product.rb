@@ -6,4 +6,10 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: true
 
+  monetize :total_cents, :allow_nil => true
+
+  def total_cents
+    price.present? ? price : 0
+  end
+
 end

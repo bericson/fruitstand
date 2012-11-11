@@ -1,27 +1,39 @@
-<h1>Store</h1>
+<h1>Marketplace</h1>
 <h2>Current Cart:</h2>
 
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-
-<ul>
-  <li>NAME -- PRICE -- QTY -- TOTAL</li>
-  <% @cart.line_items.each do |li| %>
-    <li><%#= li.inspect %>
-      <%= "#{li.product.name} -- #{li.product.price} -- #{li.quantity}
-       -- #{li.total} ==>" %> <%= link_to 'Delete Line Item (and all
+<table class="table table-striped">
+  <thead>
+  <th>Name</th>
+  <th>Price</th>
+  <th>Quantity</th>
+  <th>Total</th>
+  </thead>
+  <tbody>
+    <% @cart.line_items.each do |li| %>
+    <tr>
+      <td><%= li.product.name %></td>
+      <td>$<%= li.product.total %></td>
+      <td class="cart-quantity"><%= li.quantity %></td>
+      <td>$<%= li.total %></td>
+      <td>&raquo; <%= link_to 'Delete Line Item (and all
         items contained therein)', remove_item_path(id: li),
-                                                :method => 'post' %>
-     </li>
-  <% end %>
-</ul>
+                      :method => 'post' %></td>
+    </tr>
+    <% end %>
+    <tr id="cart-totals">
+      <td colspan="2" class="cart-totals-label">Cart Totals:</td>
+      <td class="cart-total"><%= @cart.line_items.sum(&:quantity) %></td>
+      <td class="cart-total">$<%= @cart.total %></td>
+      <td><span class="cart-total"><%= @cart.line_items.count %></span>
+        total line items</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><%= "This cart currently has #{@cart.line_items.count} line items,
+<p><%#= "This cart currently has #{@cart.line_items.count} line items,
 with a total of #{@cart.line_items.sum(&:quantity)}
 individual items."%>
 
-<p><%= "The current cart total is: $#{@cart.total}" %></p>
-
 <p><%= link_to "Continue Shopping", root_path %> | <%= link_to "Proceed to
 Checkout", checkout_path, :method => 'post' %></p>
+

@@ -1,4 +1,4 @@
-<h1>Store</h1>
+<h1>Marketplace</h1>
 <h2>Products:</h2>
 
 <% if notice %>
@@ -14,8 +14,8 @@
   <% @products.each do |product| %>
     <tr>
       <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= link_to 'Add to Cart', add_item_path(id: product),
+      <td>$<%= product.total %></td>
+      <td>&raquo; <%= link_to 'Add to Cart', add_item_path(id: product),
                       :method => 'post' %></td>
     </tr>
   <% end %>
